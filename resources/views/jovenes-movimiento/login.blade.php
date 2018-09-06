@@ -1,4 +1,4 @@
-@extends('main')
+@extends('mainjm')
 
 @section('title','Crea tu cuenta')
 
@@ -7,18 +7,13 @@
 
 @section('content')
 
-	{!! Form::open(['route' => 'usuario.store', 'method' => 'POST']) !!}
+	{!! Form::open(['route' => 'beneficiario.captura', 'method' => 'POST']) !!}
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-8">
 					<div class="card">
-						<div class="card-header text-md-center" style="color:purple;">{{ '  PROGRAMA SOCIAL FUERZA JOVEN' }}</div>
+						<div class="card-header">{{ '  PROGRAMA SOCIAL  |  JÓVENES EN MOVIMIENTO	|	CREA TU CUENTA DE ACCESO' }}</div>
 						<div class="card-body">
-						<div class="form-group row mb-0">
-							<div class="col-md-12 offset-md-0 text-md-center" style="color: brown;">
-								<p>(En caso de ser MENOR DE EDAD no se requiere llenar campos de INE.)</p>
-							</div>
-						</div>
 							<div class = "form-group row">
 								<div class="col-md-6 col-form-label text-md-right">
 									{!! Form::label('FOLIO','* Folio de la tarjeta') !!}
@@ -62,7 +57,11 @@
 								</div>
 							</div>
 							<br>
-							<div class="form-group row">
+							<div class="col-md-9 offset-md-2 text-md-center">
+								<h5 style="color:green;">¿Quieres saber más sobre este Programa Social?</h5>
+								<p>Te invitamos a visitar nuestra <a href="btn btn-link" onclick="window.open('http://imej.edomex.gob.mx/jovenes')">página oficial</a>, ahí encontrarás toda la información.</p>
+							</div>
+							<!--<div class="form-group row">
                             	<div class="col-md-12 offset-md-0">
                                 	<div class="form-check">
                                     	<label class="form-check-label" for="siguenos">
@@ -75,15 +74,7 @@
                                 	</div>
                             	</div>
                         	</div>
-                        	<div class="form-group row mb-0">
-								<div class="col-md-9 offset-md-2 text-md-center">
-									<p style="color:green;">¿Quieres participar en el programa social Jóvenes en Movimiento?</p>
-								</div>
-								<div class="col-md-6 offset-md-5">
-									<a href="{{ route('beneficiario.login') }}" class="btn btn-link">¡Registrarte aquí! <i class="fa fa-check"></i></a>
-								</div>
-							</div>
-							<!--<div class="form-group row">
+							<div class="form-group row">
                             	<div class="col-md-12 offset-md-0">
                                 	<div class="form-check">
                                     	<div class="col-md-3 offset-md-4">

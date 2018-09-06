@@ -1,5 +1,27 @@
 <?php 
+/*
+Clase modelo: FURWEB_METADATO_299
+Descripción: esta clase se creó para poder utilizar los datos de esta tabla.
+Función scopeSearch_name() : Las funciones scope se utilizan para realizan querys especificos; en este caso
+                            se realiza la busqueda del registro con un nombre en especifico, y el resultado
+                            se regresa en la variable query.
 
+Función scopeSearch() : Las funciones scope se utilizan para realizan querys especificos; en este caso
+                        se realiza la busqueda del registro con un folio en especifico, y el resultado
+                        se regresa en la variable query.
+
+Función ValidaEdad() : A partir de la fecha de nacimiento dada por el usuario, se obtine el año de nacimiento,
+                        este año es sometido a una operación matemática (AÑO_ACTUAL - AÑO_NACIMIENTO) y el 
+                        resultado, son los años que tiene.
+
+Función ValidaDuplicados() : Esta función verifica que no existan registros duplicados en la base de satos,
+                             por medio del nombre completo, fecha de nacimiento y el municipio donde vive.
+
+Función ValidaCURP() : Esta función verifica que sea correcta la curp ingresada respecto a tu fecha de nacimiento, 
+                        sexo y entidad de nacimiento.
+
+Función ValidaRFC() : Esta función verifica que sea correcta la rfc ingresada respecto a tu fecha de nacimiento.
+*/
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -199,10 +221,10 @@ class FURWEB_METADATO_299 extends Model
 
 
     public static function ValidaRFC($fecha_aux,$curp_aux,$rfc_aux){
-        $fecha = $fecha_aux;
-        $curp = $curp_aux;
-        $rfc = $rfc_aux;
-
+        $fecha  = strtoupper($fecha_aux);
+        $curp   = strtoupper($curp_aux);
+        $rfc   = strtoupper($rfc_aux);
+        
         $fecha_esp = str_replace("/", "", $fecha);
         $dia     = substr($fecha_esp, 0, 2);
         $mes     = substr($fecha_esp, 2, 2);
@@ -212,31 +234,33 @@ class FURWEB_METADATO_299 extends Model
         $rfc10 = substr($rfc, 0, 10);
         $curp10 = substr($curp, 0, 10);
         $armada = $anio.$mes.$dia;
-
+        //dd($fechaRfc.' != '.$armada.' y la otra condicion '.$rfc10.' != '.$curp10);
         if ($fechaRfc != $armada){
             return false;
-        }
-
-        if ($rfc10 != $curp10){
-            return false;
-        }
-
-        return true;
+        }else
+            if ($rfc10 != $curp10){
+                return false;
+            }else
+                return true;
     }
 
-    /*public static function NombreLocalidad($cve_ef,$cve_localidad){
-        $loc = LU_LOCALIDADES_SEDESEM::where([
-                                            'CVE_ENTIDAD_FEDERATIVA' => $cve_ef,
-                                            'CVE_LOCALIDAD'          => $cve_localidad
-                                            ])->get();
-        //dd($loc);
-        //$nombre_loc = $loc->DESC_LOCALIDAD;
-        return $loc;
+    public static function validaNombres($nombre){
+        $permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+           for ($i=0; $i<strlen($nombre); $i++){
+              if (strpos($permitidos, substr($nombre,$i,1))===false){
+                 return false;
+              }
+           }
+           return true;
     }
 
-    public static function RegionID($cve_municipio){
-        $mun = CAT_MUNICIPIOS_SEDESEM::where('MUNICIPIOID',$cve_municipio)->get();
-        //dd($mun);
-        return $mun;
-    }*/
+    public static function validaNumero($numero){
+        $permitidos = "1234567890";
+           for ($i=0; $i<strlen($numero); $i++){
+              if (strpos($permitidos, substr($numero,$i,1))===false){
+                 return false;
+              }
+           }
+           return true;
+    }
 }

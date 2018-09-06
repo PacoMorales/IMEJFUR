@@ -12,7 +12,7 @@ class FURWEB_CTRL_ACCESO_Request extends FormRequest
             'FOLIO.required'    => 'El FOLIO es necesario para registrarse.',
             //'FOLIO.max'         => 'El FOLIO debe ser menor de 6 dígitos.',
             //'FOLIO.min'         => 'El FOLIO debe ser mayor que el número cero.',
-            'FOLIO.integer'     => 'El FOLIO debe ser numérico.',
+            //'FOLIO.integer'     => 'El FOLIO debe ser numérico.',
             //'FOLIO.unique'      => 'El FOLIO debe ser único. Al parecer este FOLIO ya fue registrado.',
             'LOGIN.min'         => 'El CORREO debe ser de mínimo 10 caracteres.',
             'LOGIN.max'         => 'El CORREO debe ser de máximo 50 caracteres.',
@@ -46,7 +46,7 @@ class FURWEB_CTRL_ACCESO_Request extends FormRequest
         return [
         //'N_PERIODO' => 'required', 
         //'CVE_PROGRAMA' => 'required', 
-        'FOLIO' => 'integer|required',
+        'FOLIO' => 'required',
         //'FOLIO' => 'integer|unique: FURWEB_CTRL_ACCESO_299|required',
         //'CVE_DEPENDENCIA' => 'required',
         'LOGIN' => 'min:10|max:50|email|required',

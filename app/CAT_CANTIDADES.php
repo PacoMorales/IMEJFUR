@@ -1,5 +1,8 @@
 <?php
-
+/*
+Clase modelo: CAT_CANTIDADES
+Descripción: Esta clase modelo fue utilizada para obtener los datos de la base de datos.
+*/
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;

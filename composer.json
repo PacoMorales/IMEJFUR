@@ -15,7 +15,8 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.6",
         "propaganistas/laravel-fakeid": "^4.0",
-        "yajra/laravel-oci8": "5.6.*"
+        "yajra/laravel-oci8": "5.6.*",
+        "kartik-v/dependent-dropdown": "@dev"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

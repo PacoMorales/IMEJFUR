@@ -38,7 +38,7 @@
 							  </thead>
 							  <tbody>
 								    <tr>
-								      <th>{{ $usuario->folio }}</th>
+								      <th>{{ $usuario->folio }}</th> 
 								      <th>{{ $usuario->login }}</th>
 								      <td><a href="{{ route('info-personal.edit',$usuario->folio) }}" class="btn btn-success"><i class="fa fa-pencil"></i> Datos Personales</a> <a href="{{ route('info-sociodemo.edit',$usuario->folio) }}" class="btn btn-info"><i class="fa fa-pencil"></i> Datos Socioeconomicos</a></td>
 							          <!--<td><a href="" class="btn btn-danger"><i class="fa fa-file"></i> PDF</a></td>-->

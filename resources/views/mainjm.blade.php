@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>@yield('title','Inicio') | Fuerza Joven</title>
+	<title>@yield('title','Inicio') | Jóvenes en Movimiento</title>
 	<link rel="shortcut icon" type="image/png" href="{{ asset('images/Edomex.png') }}"/>
 	<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">	
 	<link rel="stylesheet" href="{{ asset('plugins/bootstrap/js/bootstrap.js') }}">

@@ -1,5 +1,8 @@
 <?php
-
+/*
+Clase modelo: SEDESEM_299
+Descripción: esta clase se creó para poder utilizar los datos de esta tabla.
+*/
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;

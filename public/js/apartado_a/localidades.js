@@ -1,7 +1,4 @@
-function carga_localidades(municipio_id){
-
-	//var municipio_id = municipio_id //no rompamos la cebolla PERO TE FALTABA INA i, en el parametro decia MUNICIPO_ID//
-	//alert(municipio_id);
+function carga_localidades(municipio_id){ 
 	if(! municipio_id){
 		$('#localidad').html('<option value="">SELECCIONE LOCALIDAD</option>');
 	}
@@ -27,10 +24,10 @@ function carga_secciones(localidad_id){
 	});
 }
 $(document).ready(function(){
-	$("#municipio").change(function(){
+	$("#municipio2").change(function(){
 		carga_localidades($("#municipio").val());
 	});
-	$("#municipio").change(function(){
+	$("#municipio2").change(function(){
 		carga_secciones($("#municipio").val());
 	});
 

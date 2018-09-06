@@ -43,7 +43,7 @@ class FURWEB_METADATO_299_Request extends FormRequest
             'LADA_TELEFONO.integer'     => 'La LADA debe ser numérico.',
             'LADA_TELEFONO.required'    => 'La LADA es necesaria para registrarse.',
             'TELEFONO.integer'          => 'El TELEFONO debe ser numérico.',
-            'TELEFONO.required'         => 'El TELEFONO es necesaria para registrarse.',
+            'TELEFONO.required'         => 'El TELEFONO es necesario para registrarse.',
         ];
     }
 

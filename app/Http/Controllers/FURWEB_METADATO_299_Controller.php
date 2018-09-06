@@ -17,22 +17,30 @@ use App\LU_LOCALIDADES_SEDESEM;
 use App\CAT_NACIONALIDADES;
 use App\CAT_ESTADO_CIVIL;
 use App\CAT_ENTIDAD_FEDERATIVA;
-use App\CAT_SECCIONES_SEDESEM;
+use App\CAT_SECCIONES_SEDESEM;  
 
 class FURWEB_METADATO_299_Controller extends Controller
 {
     public function LocalidadMunicipio(Request $request, $id){
-    	if($request->ajax()){
+        //dd('ENTRO A LocalidadMunicipio');
+    	/*if($request->ajax()){
             $local = LU_LOCALIDADES_SEDESEM::Localidad($id);
-            return response()->json($local); 
-        }
+            //dd($local->all());
+            //return response()->json($local); 
+            //dd($local);
+            return json_encode($local);
+        }*/
+
+        $local = LU_LOCALIDADES_SEDESEM::Localidad($id);
+        return response()->json($local);
+        //return json_encode($local);
     }
 
     public function SeccionLocalidad(Request $request, $id){
-        if($request->ajax()){
+        //if($request->ajax()){
             $sec = CAT_SECCIONES_SEDESEM::Seccion($id);
             return response()->json($sec);
-        }
+        //}
     }
 
     public function index(){}
@@ -51,6 +59,26 @@ class FURWEB_METADATO_299_Controller extends Controller
             }else{
                 return view('errors.error');
             }
+/***VALIDAR NOMBRES Y APELLIDOS****************************************************************************/
+        if(FURWEB_METADATO_299::validaNombres($request->PRIMER_APELLIDO)==false){
+            return back()->withInput()->withErrors(['PRIMER_APELLIDO' => 'El PRIMER APELLIDO '.$request->PRIMER_APELLIDO.' contiene caracteres inválidos. Favor de verificar.']);
+        }else
+            if($request->SEGUNDO_APELLIDO != NULL){
+                if(FURWEB_METADATO_299::validaNombres($request->SEGUNDO_APELLIDO)==false){
+                    return back()->withInput()->withErrors(['SEGUNDO_APELLIDO' => 'El SEGUNDO APELLIDO '.$request->SEGUNDO_APELLIDO.' contiene caracteres inválidos. Favor de verificar.']);
+                }
+            }
+                if(FURWEB_METADATO_299::validaNombres($request->NOMBRES)==false){
+                    return back()->withInput()->withErrors(['NOMBRES' => 'El NOMBRE '.$request->NOMBRES.' contiene caracteres inválidos. Favor de verificar.']);
+                }
+/***VALIDAR TELEFONO******************************************************************************************/
+        if(FURWEB_METADATO_299::validaNumero($request->LADA)==false){
+            return back()->withInput()->withErrors(['TELEFONO' => 'El LADA contiene caracteres inválidos. Favor de verificar.']);
+        }else{
+            if(FURWEB_METADATO_299::validaNumero($request->TELEFONO)==false){
+                return back()->withInput()->withErrors(['TELEFONO' => 'El TELÉFONO contiene caracteres inválidos. Favor de verificar.']);
+            }
+        }
 /***VALIDAR CURP******************************************************************************************/
             $curp_aux = FURWEB_METADATO_299::find($request->FOLIO);
             if($curp_aux == NULL){      //QUIERE DECIR QUE NO HAY REGISTRO CON ESE FOLIO (QUE AUN NO ESTA ESA CURP REGISTRADA)
@@ -59,11 +87,18 @@ class FURWEB_METADATO_299_Controller extends Controller
                 if($edad == false){
                     return back()->withErrors(['FECHA_NACIMIENTO' => 'La edad del solicitante debe estar entre los 12 y los 29 años.']);
                 }else
+/***VALIDAR RFC************************************************************************************/
+                    if($request->RFC != NULL){
+                        $rfc = FURWEB_METADATO_299::ValidaRFC($request->FECHA_NACIMIENTO,$request->CURP,$request->RFC);
+                        if($rfc == false)
+                            return back()->withInput()->withErrors(['FOLIO' => 'Al parecer el RFC '.$request->RFC.' tiene un error ya que no coincide con los dígitos de la CURP, favor de verificar.']);
+                        
+                    }
 /***VALIDAR DUPLICADOS************************************************************************************/
                     $nombre_comp = $request->PRIMER_APELLIDO.' '.$request->SEGUNDO_APELLIDO.' '.$request->NOMBRES;
                     $duplicado = FURWEB_METADATO_299::ValidaDuplicados($nombre_comp,$request->FECHA_NACIMIENTO,$request->municipio);
                     if($duplicado == false){
-                        return back()->withErrors(['FOLIO' => 'Este registro ya se encuentra en la base de datos.']);
+                        return back()->withInput()->withErrors(['FOLIO' => 'Este registro ya se encuentra en el sistema.']);
                     }else{
 /***VALIDAR FORMATO CURP******************************************************************************************/
                         $vcurp = FURWEB_METADATO_299::ValidaCurp($request->FECHA_NACIMIENTO,$request->CURP,$request->sexo,$request->cve_entidad_federativa);
@@ -141,22 +176,29 @@ class FURWEB_METADATO_299_Controller extends Controller
                             $nuevo_registro->IP                     = ' ';
                             $nuevo_registro->FECHA_REG              = date('Y/m/d');
                             $nuevo_registro->save();
+                            //Flash::info("Los siguientes datos son de menor importancia pero son de gran utilidad para generar infomación estadística.")->important();
+                            //Flash::warning("Si lo desea, puedes dar clic en el boton TERMINAR sin realizar ningún cambio.")->important();
+/***************ENTRA A LA ÚTIMA PANTALLA!!!******************************************************************************************************************************************/
+                            $user_data = ['STATUS_2' => ' '];
+                            FURWEB_CTRL_ACCESO::where('FOLIO', $request->folio)->update($user_data);
                             Flash::success("La información fue registrada satisfactoriamente.")->important();
-                            Flash::info("Los siguientes datos son de menor importancia pero son de gran utilidad para generar infomación estadística.")->important();
-                            Flash::warning("Si lo desea, puedes dar clic en el boton TERMINAR sin realizar ningún cambio.")->important();
-                            return redirect()->route('info-sociodemo.show',$request->FOLIO);
+                            return redirect()->route('usuario.ok');
                         }else{
-                            return back()->withErrors(['CURP' => 'El CURP está en un formato incorrecto. Verificar.']);
+                            return back()->withInput()->withErrors(['CURP' => 'El CURP '.$request->CURP.' está en un formato incorrecto. Verificar si no fue un error de escritura.']);
                         }
                     }
             }
             else
                 if($curp_aux->curp == $request->CURP){
-                    return back()->withErrors(['CURP' => 'El CURP está duplicado. Verificar si no hubo un error.']);
+                    return back()->withInput()->withErrors(['CURP' => 'El CURP '.$request->CURP.' está duplicado. Verificar si no hubo un error de escritura.']);
                 }else
                     if($curp_aux->curp != NULL){
-                        return back()->withErrors(['FOLIO' => 'Este registro ya se encuentra en la base de datos.']);
+                        return back()->withInput()->withErrors(['FOLIO' => 'La CURP '.$request->CURP.' ya se encuentra registrada en el sistema. Verificar si no hubo un error de escritura.']);
                 }
+    }
+
+    public function nuevoRegistroJEM(){ //nuevo registro jovenes en movimiento
+        return view('usuario.terminado');
     }
 
     public function show($id){
@@ -171,10 +213,10 @@ class FURWEB_METADATO_299_Controller extends Controller
             }else{
                 return view('errors.error');
             }
+            //dd($id);
         $usuario = FURWEB_CTRL_ACCESO::find($id);
         $programa = CAT_PROGRAMAS::find(299);
-        $ent_fed = 15;
-        $municipios = CAT_MUNICIPIOS_SEDESEM::where('ENTIDADFEDERATIVAID',$ent_fed)->orderBy('MUNICIPIONOMBRE','asc')->get();
+        $municipios = CAT_MUNICIPIOS_SEDESEM::select('MUNICIPIOID', 'MUNICIPIONOMBRE')->where('ENTIDADFEDERATIVAID',15)->orderBy('MUNICIPIONOMBRE','asc')->get();
         $nacionalidad = CAT_NACIONALIDADES::all();
         $edo_civil = CAT_ESTADO_CIVIL::all();
         $entidad_fed = CAT_ENTIDAD_FEDERATIVA::all();  

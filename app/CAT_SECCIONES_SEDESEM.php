@@ -1,5 +1,10 @@
 <?php
-
+/*
+Clase modelo: CAT_SECCIONES_SEDESEM
+Descripción: esta clase se creó para poder utilizar los datos de este catálogo.
+Función Seccion() : Es utilizada para obtener todas las secciones pertenecientes al municipio con el id igual 
+                    al parámetro que viene en la función.
+*/
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;

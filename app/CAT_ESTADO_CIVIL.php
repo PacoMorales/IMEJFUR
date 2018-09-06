@@ -1,5 +1,8 @@
 <?php
-
+/*
+Clase modelo: CAT_ESTADO_CIVIL
+Descripción: esta clase se creó para poder utilizar los datos de este catálogo.
+*/
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
