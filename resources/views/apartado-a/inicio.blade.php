@@ -322,7 +322,7 @@
 									{!! Form::label('RFC','RFC') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('RFC',null,['class' => 'form-control','placeholder' => '10 dígitos','minlength'=>"10",'maxlength'=>"10",,'onkeypress'=>'return soloAlfaSE(event)']) !!}
+									{!! Form::text('RFC',null,['class' => 'form-control','placeholder' => '10 dígitos','minlength'=>"10",'maxlength'=>"10",'onkeypress'=>'return soloAlfaSE(event)']) !!}
 								</div>	
 							</div>
 
