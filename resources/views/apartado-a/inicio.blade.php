@@ -163,7 +163,7 @@
 									{!! Form::label('NUM_INT','Número interior') !!}
 								</div>
 								<div class="col-md-2 offset-md-0">
-									{!! Form::text('NUM_INT',null,['class' => 'form-control','placeholder' => 'Ej. 3A,'onkeypress'=>'return soloNumeros(event)']) !!}<h6 style="color:red;">(Sólo números)</h6>
+									{!! Form::text('NUM_INT',null,['class' => 'form-control','placeholder' => 'Ej. 3A','onkeypress'=>'return soloNumeros(event)']) !!}<h6 style="color:red;">(Sólo números)</h6>
 								</div>	
 							</div>
 
