@@ -427,7 +427,7 @@
 				//alert(mun);
 				if(mun) {
 					$.ajax({
-						url: '/fuerza-joven/info-personal/localidades/'+mun,
+						url: 'localidades/'+mun,
 						type: "GET",
 						dataType: "json",
 						success:function(data){
@@ -454,7 +454,7 @@
 				if(mun) {
 					$.ajax({
 						/*url: 'public/fuerza-joven/info-personal/'+mun+'/secciones',*/
-						url: '/fuerza-joven/info-personal/secciones/'+mun,
+						url: 'secciones/'+mun,
 						type: "GET",
 						dataType: "json",
 						success:function(data){

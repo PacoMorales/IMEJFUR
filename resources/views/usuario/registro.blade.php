@@ -75,23 +75,6 @@
                                 	</div>
                             	</div>
                         	</div>
-                        	<div class="form-group row mb-0">
-								<div class="col-md-9 offset-md-2 text-md-center">
-									<p style="color:green;">¿Quieres participar en el programa social Jóvenes en Movimiento?</p>
-								</div>
-								<div class="col-md-6 offset-md-5">
-									<a href="{{ route('beneficiario.login') }}" class="btn btn-link">¡Registrarte aquí! <i class="fa fa-check"></i></a>
-								</div>
-							</div>
-							<!--<div class="form-group row">
-                            	<div class="col-md-12 offset-md-0">
-                                	<div class="form-check">
-                                    	<div class="col-md-3 offset-md-4">
-                                    		<a class="btn btn-warning" onclick="window.open('http://imej.edomex.gob.mx/acerca-de/aviso-privacidad');"><i class="fa fa-info-circle"></i> Aviso de privacidad</a>
-                                    	</div>
-                                	</div>
-                            	</div>
-                        	</div>-->
 						</div>
 					</div>
 				</div>
