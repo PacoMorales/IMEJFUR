@@ -145,7 +145,7 @@
 									{!! Form::label('CALLE','* Calle') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('CALLE',null,['class' => 'form-control','placeholder' => 'Ej. 2 de Noviembre' ,'required','maxlength' => '50']) !!}
+									{!! Form::text('CALLE',null,['class' => 'form-control','placeholder' => 'Ej. 2 de Noviembre' ,'required','maxlength' => '50','onkeypress'=>'return soloAlfa(event)']) !!}
 								</div>	
 							</div>
 
@@ -154,7 +154,7 @@
 									{!! Form::label('NUM_EXT','Número exterior') !!}
 								</div>
 								<div class="col-md-2 offset-md-0">
-									{!! Form::text('NUM_EXT',null,['class' => 'form-control','placeholder' => 'Ej. 505']) !!}
+									{!! Form::text('NUM_EXT',null,['class' => 'form-control','placeholder' => 'Ej. 505','onkeypress'=>'return soloNumeros(event)']) !!}<h6 style="color:red;">(Sólo números)</h6>
 								</div>	
 							</div>
 
@@ -163,7 +163,7 @@
 									{!! Form::label('NUM_INT','Número interior') !!}
 								</div>
 								<div class="col-md-2 offset-md-0">
-									{!! Form::text('NUM_INT',null,['class' => 'form-control','placeholder' => 'Ej. 3A']) !!}
+									{!! Form::text('NUM_INT',null,['class' => 'form-control','placeholder' => 'Ej. 3A,'onkeypress'=>'return soloNumeros(event)']) !!}<h6 style="color:red;">(Sólo números)</h6>
 								</div>	
 							</div>
 
@@ -172,7 +172,7 @@
 									{!! Form::label('ENTRE_CALLE','Entre calle') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('ENTRE_CALLE',null,['class' => 'form-control','placeholder' => 'Ej. Ignacio zaragoza','maxlength' => '50']) !!}
+									{!! Form::text('ENTRE_CALLE',null,['class' => 'form-control','placeholder' => 'Ej. Ignacio zaragoza','maxlength' => '50','onkeypress'=>'return soloAlfa(event)']) !!}
 								</div>	
 							</div>
 
@@ -181,7 +181,7 @@
 									{!! Form::label('Y_CALLE','Y calle') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('Y_CALLE',null,['class' => 'form-control','placeholder' => 'Ej. Adolfo lópez mateos','maxlength' => '50']) !!}
+									{!! Form::text('Y_CALLE',null,['class' => 'form-control','placeholder' => 'Ej. Adolfo lópez mateos','maxlength' => '50','onkeypress'=>'return soloAlfa(event)']) !!}
 								</div>	
 							</div>
 
@@ -190,7 +190,7 @@
 									{!! Form::label('OTRA_REFERENCIA','* Otra referencia') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('OTRA_REFERENCIA',null,['class' => 'form-control','placeholder' => 'Ej. En la entrada están 2 arboles','required','maxlength' => '100']) !!}
+									{!! Form::text('OTRA_REFERENCIA',null,['class' => 'form-control','placeholder' => 'Ej. En la entrada están 2 arboles','required','maxlength' => '100','onkeypress'=>'return soloAlfa(event)']) !!}
 								</div>	
 							</div>
 
@@ -199,7 +199,7 @@
 									{!! Form::label('COLONIA','* Colonia') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('COLONIA',null,['class' => 'form-control','placeholder' => 'Ej. Centro Histórico' ,'required','maxlength' => '50']) !!}
+									{!! Form::text('COLONIA',null,['class' => 'form-control','placeholder' => 'Ej. Centro Histórico' ,'required','maxlength' => '50','onkeypress'=>'return soloAlfa(event)']) !!}
 								</div>	
 							</div>
 
@@ -208,7 +208,7 @@
 									{!! Form::label('CODIGO_POSTAL','* Código postal') !!}
 								</div>
 								<div class="col-md-2 offset-md-0">
-									{!! Form::text('CODIGO_POSTAL',null,['class' => 'form-control','placeholder' => 'Ej. 50101' ,'required','maxlength' => '5']) !!}
+									{!! Form::text('CODIGO_POSTAL',null,['class' => 'form-control','placeholder' => 'Ej. 50101' ,'required','maxlength' => '5','onkeypress'=>'return soloNumeros(event)']) !!}<h6 style="color:red;">(Sólo números)</h6>
 								</div>	
 							</div>
 <!--# DATOS PERSONALES ###############################################################################################################################################################################################################################################################################-->
@@ -235,7 +235,7 @@
 									{!! Form::label('PRIMER_APELLIDO','* Primer apellido') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('PRIMER_APELLIDO',null,['class' => 'form-control','placeholder' => 'Ej. Gonzalez' ,'required','maxlength' => '50']) !!}
+									{!! Form::text('PRIMER_APELLIDO',null,['class' => 'form-control','placeholder' => 'Ej. Gonzalez' ,'required','maxlength' => '50','onkeypress'=>'return soloLetras(event)']) !!}
 								</div>	
 							</div>
 
@@ -244,7 +244,7 @@
 									{!! Form::label('SEGUNDO_APELLIDO','Segundo apellido') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('SEGUNDO_APELLIDO',null,['class' => 'form-control','placeholder' => 'Ej. Salgado','maxlength' => '50']) !!}
+									{!! Form::text('SEGUNDO_APELLIDO',null,['class' => 'form-control','placeholder' => 'Ej. Salgado','maxlength' => '50','onkeypress'=>'return soloLetras(event)']) !!}
 								</div>	
 							</div>
 
@@ -253,7 +253,7 @@
 									{!! Form::label('NOMBRES','* Nombre(s)') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('NOMBRES',null,['class' => 'form-control','placeholder' => 'Ej. Israel' ,'required','maxlength' => '50']) !!}
+									{!! Form::text('NOMBRES',null,['class' => 'form-control','placeholder' => 'Ej. Israel' ,'required','maxlength' => '50','onkeypress'=>'return soloLetras(event)']) !!}
 								</div>	
 							</div>
 
@@ -309,12 +309,12 @@
 									{!! Form::label('CURP','* CURP') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('CURP',null,['class' => 'form-control','placeholder' => '18 dígitos' ,'required','minlength'=>"18",'maxlength'=>"18"]) !!}
+									{!! Form::text('CURP',null,['class' => 'form-control','placeholder' => '18 dígitos' ,'required','minlength'=>"18",'maxlength'=>"18",'onkeypress'=>'return soloAlfaSE(event)','onblur'=>"document.getElementById('rfc').value=[(this.value[0])+(this.value[1])+(this.value[2])+(this.value[3])+(this.value[4])+(this.value[5])+(this.value[6])+(this.value[7])+(this.value[8])+(this.value[9])]"]) !!}
 								</div>	
 							</div>
 							<div class = "form-group row">
 								<div class="col-md-12 col-form-label text-md-center" style="color:blue;">
-									{!! Form::label('MENSAJE','Ingresa tu RFC únicamente si lo tienes. De no tenerlo, deja el campo en blanco.') !!}
+									{!! Form::label('MENSAJE','Verifica tu RFC únicamente si lo tienes. De no tenerlo, deja el campo en blanco.') !!}
 								</div>
 							</div>
 							<div class = "form-group row">
@@ -322,7 +322,7 @@
 									{!! Form::label('RFC','RFC') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('RFC',null,['class' => 'form-control','placeholder' => '10 dígitos','minlength'=>"10",'maxlength'=>"10"]) !!}
+									{!! Form::text('RFC',null,['class' => 'form-control','placeholder' => '10 dígitos','minlength'=>"10",'maxlength'=>"10",,'onkeypress'=>'return soloAlfaSE(event)']) !!}
 								</div>	
 							</div>
 
@@ -349,7 +349,7 @@
 									{!! Form::label('CVE_ID_OFICIAL','Clave de identificación oficial') !!}
 								</div>
 								<div class="col-md-4 offset-md-0">
-									{!! Form::text('CVE_ID_OFICIAL',null,['class' => 'form-control','placeholder' => 'Únicamente si eres mayor de edad','maxlength' => '25']) !!}
+									{!! Form::text('CVE_ID_OFICIAL',null,['class' => 'form-control','placeholder' => 'Únicamente si eres mayor de edad','maxlength' => '25','onkeypress'=>'return soloAlfaSE(event)']) !!}
 								</div>	
 							</div>
 
@@ -358,7 +358,7 @@
 									{!! Form::label('LADA_TELEFONO','* Lada') !!}
 								</div>
 								<div class="col-md-2 offset-md-0">
-									{!! Form::text('LADA_TELEFONO',null,['class' => 'form-control','placeholder' => 'Ej. 712' ,'required','maxlength'=>"3",'minlength' => "1"]) !!}
+									{!! Form::text('LADA_TELEFONO',null,['class' => 'form-control','placeholder' => 'Ej. 712' ,'required','maxlength'=>"3",'minlength' => "1",'onkeypress'=>'return soloNumeros(event)']) !!}<h6 style="color:red;">(Sólo números)</h6>
 								</div>	
 							</div>
 
@@ -367,7 +367,7 @@
 									{!! Form::label('TELEFONO','* Teléfono') !!}
 								</div>
 								<div class="col-md-2 offset-md-0">
-									{!! Form::text('TELEFONO',null,['class' => 'form-control','placeholder' => 'Ej. 5407320' ,'required','maxlength'=>"8",'minlength' => "7"]) !!}
+									{!! Form::text('TELEFONO',null,['class' => 'form-control','placeholder' => 'Ej. 5407320' ,'required','maxlength'=>"8",'minlength' => "7",'onkeypress'=>'return soloNumeros(event)']) !!}<h6 style="color:red;">(Sólo números)</h6>
 								</div>	
 							</div>
 
@@ -486,6 +486,94 @@
         language: "es",
         autoclose: true
     });
+</script>
+<script>
+    function soloNumeros(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key);
+       letras = "1234567890";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key);
+       letras = "abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+    function soloAlfa(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key);
+       letras = "abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+    function soloAlfaSE(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key);
+       letras = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+    function soloCuentas(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key);
+       letras = "abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789_-@";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
 </script>
 
 	{!! Form::close() !!}
