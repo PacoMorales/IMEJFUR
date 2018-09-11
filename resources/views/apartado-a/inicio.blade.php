@@ -296,9 +296,13 @@
 								</div>
 								<div class="col-md-4 offset-md-0">
 									<select class="form-control m-bot15" name="estado_civil" required>
-            							<option value="">SELECCIONE ESTADO CIVIL</option>
+            							<option selected="true" disabled="disabled" value="">SELECCIONE ESTADO CIVIL</option>
             							@foreach($edo_civil as $ec)
-            								<option value="{{ $ec->cve_estado_civil }}">{{ $ec->estado_civil }}</option>
+            								@if($ec->cve_estado_civil == 1)
+            									<option value="{{ $ec->cve_estado_civil }}" selected>{{ $ec->estado_civil }}</option>
+            								@else
+            									<option value="{{ $ec->cve_estado_civil }}">{{ $ec->estado_civil }}</option>
+            								@endif
             							@endforeach    
 									</select>
 								</div>	
@@ -332,9 +336,13 @@
 								</div>
 								<div class="col-md-4 offset-md-0">
 									<select class="form-control m-bot15" name="nacionalidad" required>
-            							<option value="">SELECCIONE NACIONALIDAD</option>
+            							<option selected="true" disabled="disabled" value="">SELECCIONE NACIONALIDAD</option>
             							@foreach($nacionalidad as $nacion)
-            								<option value="{{ $nacion->cve_nacionalidad }}">{{ $nacion->desc_nacionalidad }}</option>
+            								@if($nacion->cve_nacionalidad == 126)
+            									<option value="{{ $nacion->cve_nacionalidad }}" selected>{{ $nacion->desc_nacionalidad }}</option>
+            								@else
+            									<option value="{{ $nacion->cve_nacionalidad }}">{{ $nacion->desc_nacionalidad }}</option>
+            								@endif
             							@endforeach    
 									</select>
 								</div>	
@@ -400,9 +408,13 @@
 								</div>
 								<div class="col-md-4 offset-md-0">
 									<select class="form-control m-bot15" name="cve_entidad_federativa" required>
-            							<option value="">SELECCIONE ENTIDAD FEDERATIVA</option>
+            							<option selected="true" disabled="disabled" value="">SELECCIONE ENTIDAD FEDERATIVA</option>
             							@foreach($entidad_fed as $ef)
-            								<option value="{{ $ef->cve_entidad_federativa }}">{{ $ef->entidad_federativa }}</option>
+            								@if($ef->cve_entidad_federativa==15)
+            									<option value="{{ $ef->cve_entidad_federativa }}" selected>{{ $ef->entidad_federativa }}</option>
+            								@else
+            									<option value="{{ $ef->cve_entidad_federativa }}">{{ $ef->entidad_federativa }}</option>
+            								@endif
             							@endforeach    
 									</select>
 								</div>	
