@@ -166,7 +166,7 @@ class FURWEB_CTRL_ACCESO_Controller extends Controller
                                 'FECHA_REGISTRO'    => $user->FECHA_REGISTRO
 
                 ];
-                Mail::to($request->LOGIN)->send(new EmailConfirmation($user));
+                //Mail::to($request->LOGIN)->send(new EmailConfirmation($user));
                 $user_update = FURWEB_CTRL_ACCESO::where('FOLIO',$request->FOLIO)->update($user_data);
                 Flash::success("La información de la cuenta de usuario fue registrada satisfactoriamente. Por favor lee con atención los términos de uso.")->important();
                 //Flash::info("Folio de tarjeta: ".$user->FOLIO_RELACIONADO.". Tu nombre de usuario o correo electrónico es: ".$user->LOGIN)->important();
